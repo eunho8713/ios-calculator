@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CalculatorItemQueue<T>: CalculateItem {
+struct CalculatorItemQueue<T>: CalculateItem {
     private var data: [T?] = []
     
     public var count: Int {
@@ -18,19 +18,19 @@ class CalculatorItemQueue<T>: CalculateItem {
         return data.isEmpty
     }
     
-    public func enqueue(_ element: T) {
+    public mutating func enqueue(_ element: T) {
         data.append(element)
     }
     
-    public func dequeue() -> T? {
+    public mutating func dequeue() -> T? {
         return isEmpty ? nil : data.removeFirst()
     }
     
-    public func removeAll() {
+    public mutating func removeAll() {
         data.removeAll()
     }
 
-    public func removeLast() {
+    public mutating func removeLast() {
         data.removeLast()
     }
     
